@@ -11,16 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pruebita-service")
+@RequestMapping("/payment-service")
 @CrossOrigin(origins = "*") // Permite acceso desde cualquier lado
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
     @PostMapping("/pay")
-    public ResponseEntity<Payment> makePayment(@RequestBody PaymentDTO request) {
-        Payment payment = paymentService.processPayment(request);
-        return new ResponseEntity<>(payment, HttpStatus.CREATED);
+    public Payment makePayment(@RequestBody PaymentDTO request) {
+        return paymentService.processPayment(request);
     }
 
     @GetMapping("/user/{userId}")
@@ -28,7 +27,7 @@ public class PaymentController {
         return ResponseEntity.ok(paymentService.getPaymentsByUserId(userId));
     }
 
-    @GetMapping("/bookings")
+    @GetMapping("/user")
     public List<Payment> Payment() {
         return paymentService.getAllProducts();
     }

@@ -17,7 +17,7 @@ public class PaymentService {
 
     public Payment processPayment(PaymentDTO paymentDTO) {
         double calculatedTotal = paymentDTO.getItems().stream()
-                .mapToDouble(item -> item.getQuantity() * item.getUnitPrice()) // Asegura que el campo correcto se usa
+                .mapToDouble(item -> item.getQuantity() * item.getUnitPrice())
                 .sum();
 
         Payment payment = new Payment();
