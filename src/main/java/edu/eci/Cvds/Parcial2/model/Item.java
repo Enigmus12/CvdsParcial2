@@ -8,10 +8,7 @@ public class Item {
     private int quantity;
 
     @PersistenceCreator
-    public Item(String name, double unitPrice, int quantity) {
-        this.name = name;
-        this.unitPrice = unitPrice;
-        this.quantity = quantity;
+    public Item() {
     }
 
     public String getName() {return name;}

@@ -1,6 +1,7 @@
 package edu.eci.Cvds.Parcial2.service.impl;
 
 import edu.eci.Cvds.Parcial2.dto.PaymentDTO;
+import edu.eci.Cvds.Parcial2.model.Item;
 import edu.eci.Cvds.Parcial2.model.Payment;
 import edu.eci.Cvds.Parcial2.service.interfaces.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class PaymentService {
         payment.setTotalAmount(calculatedTotal);
         payment.setDate(LocalDate.parse(paymentDTO.getDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
 
-        if (calculatedTotal <= 0) {
+        if (calculatedTotal <= payment.getTotalAmount()) {
             payment.setStatus("DECLINED");
             payment.setResponseMessage("Invalid total amount");
         } else {
